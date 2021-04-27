@@ -12,14 +12,25 @@ code {
     monospace;
 }
 
-.login_block {
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.flex_block {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 10px;
+  color: #01b4e4;
 }
 
-.login_block > input {
+.flex_block > input {
   margin-top: 5px;
   margin-bottom: 15px;
   padding: 5px;
@@ -33,5 +44,79 @@ code {
 
 .message {
   text-align: center;
-  color: #01b4e4;
+  color: #ef5350;
+}
+
+.text {
+  margin-bottom: 5px;
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 10px 40px;
+  background-color: #01b4e4;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 0;
+  outline: #01b4e4;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+/* Table-section */
+.table_title {
+  font-weight: 800;
+  color: white;
+  background-color: #ef5350;
+  font-size: 16px;
+}
+
+.table {
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  padding: 0 10px;
+  height: 40px;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+@media screen and (min-width: 700px) {
+  th {
+    font-size: 15px;
+  }
+}
+
+.sum {
+  text-align: right;
+  padding-right: 3px;
+}
+
+@media screen and (min-width: 500px) {
+  .sum {
+    padding-right: 8px;
+  }
+}
+
+.gallery {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.gallery_lot {
+  color: #373737;
+  background-color: #fff3e0;
+  cursor: zoom-in;
+}
+
+.lot_link {
+  color: #ef5350;
 }
