@@ -7,7 +7,6 @@ export default function Lots({ lots }) {
       {<SearchForm lots={lots} />}
       <div>
         {/* Lots */}
-        <h3 className="message">Лотів:</h3>
         <section>
           <table className="table gallery js-gallery">
             <thead className="gallery__item table_title">

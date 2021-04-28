@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function SearchForm({ lots }) {
   const [minDateSt, setMinDate] = useState("2020-01-01");
   const updateMinDate = (e) => {
     setMinDate(e.target.value);
-    // console.log(Number(e.target.value.replace(/-/, "").replace(/-/, "")));
   };
 
   const [maxDateSt, setMaxDate] = useState("2021-12-31");
@@ -21,26 +20,43 @@ export default function SearchForm({ lots }) {
     setSumrEnd(e.target.value);
   };
 
-  const [selSt, setSelectActiv] = useState("Всі статуси");
-  const updateSelectActiv = (e) => {
-    setSelectActiv(e.target.value);
+  const [selSt, setSelect] = useState("Всі статуси");
+  const updateSelect = (e) => {
+    setSelect(e.target.value);
   };
+  const [activLots, setActivLots] = useState("");
+  useEffect(() => {
+    const foundLotsActiv = lots.filter((arr) =>
+      arr.lot_status.split(" ").join("").includes("Активний")
+    );
+    setActivLots(foundLotsActiv.length);
+  }, [lots]);
+
+  const [foundLots, setFoundLots] = useState("");
+  useEffect(() => {
+    setFoundLots(lots.length);
+  }, [lots]);
 
   const startSearch = () => {
     const minDate = Number(minDateSt.replace(/-/, "").replace(/-/, ""));
     const maxDate = Number(maxDateSt.replace(/-/, "").replace(/-/, ""));
-    const sumStart = Number(sumStartSt);
-    const sumEnd = Number(sumEndSt);
-    const selectActiv = selSt;
+    const minSum = Number(sumStartSt);
+    const maxSum = Number(sumEndSt);
+    const select = selSt;
 
-    console.log(minDate);
-    console.log(maxDate);
-    console.log(sumStart);
-    console.log(sumEnd);
-    console.log(selectActiv);
+    console.log(minDate, maxDate, minSum, maxSum, select);
     console.log(lots);
 
-    const filterSum = lots.filter(
+    // Фільтр по даті
+    const filterDate = lots.filter(
+      (lot) =>
+        Number(lot.date_publication.split(".").reverse().join("")) <= maxDate &&
+        Number(lot.date_publication.split(".").reverse().join("")) >= minDate
+    );
+    // console.log("Фильтр по даті:", filterDate.length);
+
+    // Фільтр по сумі
+    const filterSum = filterDate.filter(
       (arr) =>
         Number(
           arr.expected_cost
@@ -48,16 +64,33 @@ export default function SearchForm({ lots }) {
             .join("")
             .replace(/\s+/g, "")
             .replace(/,/, ".")
-        ) <= maxDate &&
+        ) <= maxSum &&
         Number(
           arr.expected_cost
             .split("")
             .join("")
             .replace(/\s+/g, "")
             .replace(/,/, ".")
-        ) >= sumStart
+        ) >= minSum
     );
-    console.log("Фильтр по даті та сумі:", filterSum.length);
+    // console.log("Фильтр по даті та сумі:", filterSum.length);
+
+    // Фільтер по статусу
+    if (select !== "Всі статуси") {
+      const filterLots = filterSum.filter((arr) =>
+        arr.lot_status.split(" ").join("").includes(select)
+      );
+
+      setFoundLots(filterLots.length);
+      // console.log(`За параметрами пошуку: "${select}": ${filterLots.length}`);
+    } else setFoundLots(lots.length);
+
+    // Кількість Активних лотів
+    const filterLotsActiv = filterSum.filter((arr) =>
+      arr.lot_status.split(" ").join("").includes("Активний")
+    );
+    setActivLots(filterLotsActiv.length);
+    // console.log(`Активних лотів: ${filterLotsActiv.length}`);
   };
 
   return (
@@ -125,7 +158,7 @@ export default function SearchForm({ lots }) {
               <form
                 className="search-form"
                 id="search-form"
-                onChange={updateSelectActiv}
+                onChange={updateSelect}
               >
                 <select className="select" id="select">
                   <option value="Всі статуси">Всі статуси закупівлі</option>
@@ -147,6 +180,11 @@ export default function SearchForm({ lots }) {
           </button>
         </div>
       </section>
+      <div className="result-div">
+        <h3 className="result">Всього лотів: {lots.length}</h3>
+        <h3 className="result">Активних лотів: {activLots}</h3>
+        <h3 className="result">Знайдено за параметрами пошуку: {foundLots}</h3>
+      </div>
     </>
   );
 }
