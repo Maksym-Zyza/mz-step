@@ -76,7 +76,6 @@ a {
 }
 
 .result {
-  /* display: inline-block; */
   margin: 2px 0px;
   color: #ef5350;
 }
@@ -119,6 +118,7 @@ a {
 }
 
 .input_date {
+  margin: 0 4px;
   width: 170px;
   height: 36px;
   border-radius: 5px;
@@ -130,6 +130,7 @@ a {
 }
 
 .select_sum {
+  margin: 0 4px;
   width: 170px;
   height: 36px;
   border-radius: 5px;
@@ -172,11 +173,12 @@ a {
 
 .search-form {
   text-align: center;
+  font-weight: 500;
 }
 
 .search-form .select:hover,
 .search-form .select:focus {
-  border: 2px solid #fff;
+  background-color: #fff3e0;
 }
 
 .form-field:hover > .form-icon,
@@ -194,6 +196,7 @@ a {
   border-radius: 7px;
   background: #4676d7;
   color: #fff;
+  font-weight: 800;
   font-size: 16px;
   outline-color: #fff;
 }
@@ -320,7 +323,10 @@ th {
 .gallery_lot {
   color: #373737;
   background-color: #fff3e0;
-  cursor: zoom-in;
+}
+
+.gallery_lot:hover {
+  color: #e45f4c;
 }
 
 .lot_link {
@@ -423,7 +429,7 @@ th {
   z-index: 100;
   cursor: pointer;
   text-align: center;
-  opacity: 0.5;
+  opacity: 0.8;
   visibility: visible;
 }
 
@@ -437,4 +443,10 @@ th {
   height: 80px;
   justify-content: center;
   align-items: center;
+}
+
+.inframe {
+  border: none;
+  width: 100%;
+  height: 100%;
 }

@@ -24,13 +24,19 @@ export default class App extends React.Component {
     this.setState({ account: true });
   };
 
+  getLots = () => {
+    // this.setState({ lots: {} });
+  };
+
   render() {
     const { account, lots } = this.state;
 
     return (
       <div>
         {/* Get Lots */}
-        {account && <Lots lots={lots} scroll={scrollTo()} />}
+        {account && (
+          <Lots lots={lots} getLots={this.getLots} scroll={scrollTo()} />
+        )}
 
         {/* Authorisetion */}
         {!account && <Authorisetion hasAccount={this.hasAccount} lots={lots} />}

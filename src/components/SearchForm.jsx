@@ -64,7 +64,7 @@ export default function SearchForm({ lots }) {
         Number(lot.date_publication.split(".").reverse().join("")) <= maxDate &&
         Number(lot.date_publication.split(".").reverse().join("")) >= minDate
     );
-    console.log("Фильтр по даті:", filterDate.length);
+    // console.log("Фильтр по даті:", filterDate.length);
 
     // Фільтр по сумі та даті
     const filterSum = filterDate.filter(
@@ -84,7 +84,7 @@ export default function SearchForm({ lots }) {
             .replace(/,/, ".")
         ) >= minSum
     );
-    console.log("Фильтр по даті та сумі:", filterSum.length);
+    // console.log("Фильтр по даті та сумі:", filterSum.length);
 
     // Фільтер по статусу
     if (select !== "Всі статуси") {
@@ -93,7 +93,7 @@ export default function SearchForm({ lots }) {
       );
 
       setFoundLots(filterLots.length);
-      console.log(`За параметрами пошуку: "${select}": ${filterLots.length}`);
+      // console.log(`За параметрами пошуку: "${select}": ${filterLots.length}`);
     } else setFoundLots(filterSum.length);
 
     // Кількість Активних лотів

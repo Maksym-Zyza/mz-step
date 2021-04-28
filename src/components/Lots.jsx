@@ -2,9 +2,11 @@ import React from "react";
 import SearchForm from "./SearchForm";
 
 export default function Lots({ lots }) {
+  const getLots = () => {};
+
   return (
     <>
-      {<SearchForm lots={lots} />}
+      {<SearchForm lots={lots} getLots={getLots} />}
       <div>
         {/* Lots */}
         <section>
@@ -60,9 +62,9 @@ export default function Lots({ lots }) {
       </div>
 
       {/* Cкролл вверх страницы */}
-      {/* <a className="toTopBtn" href="#" id="toTop">
-        <div class="icon">&#8593;</div>
-      </a> */}
+      <a className="toTopBtn" href="/#" id="toTop">
+        <div className="icon">&#8593;</div>
+      </a>
     </>
   );
 }
