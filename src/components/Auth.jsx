@@ -1,10 +1,12 @@
 import React from "react";
 import firebase from "firebase/app";
+import Loader from "./Loader";
 
 class Auth extends React.Component {
   state = {
     email: "",
     password: "",
+    isLoading: false,
   };
 
   handleChenge = ({ target: { value, id } }) => {
@@ -26,28 +28,28 @@ class Auth extends React.Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(this.setState({ isLoading: true }))
       // .then((response) => alert(`Success ${this.state.email}!`, response))
       .then(() => {
         this.props.hasAccount();
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        alert(error.message);
+        this.setState({ isLoading: false });
+      });
+    // .finally(this.setState({ isLoading: false }));
   };
 
-  // Запись в DataBase
-  sendData = (e) => {
-    e.preventDefault();
-
-    const { key, value } = this.state;
-    const db = firebase.database();
-    db.ref(key).push(value);
-    console.log("Your data was written to DataBase");
-  };
   render() {
+    const { isLoading } = this.state;
+    const { lots } = this.props;
+    const nothing = lots.length === 0;
+
     return (
       <>
         <div className="flex_block">
-          <h1>Sign In</h1>
-          <h2 className="text">Enter your mail and password</h2>
+          <h1>Увійти</h1>
+          <h2 className="text">Введіть свою пошту та пароль</h2>
 
           <form
             className="flex_block"
@@ -55,7 +57,7 @@ class Auth extends React.Component {
             autoComplete="off"
           >
             <label className="flex_block">
-              Mail
+              Пошта
               <input
                 type="text"
                 id="email"
@@ -65,7 +67,7 @@ class Auth extends React.Component {
             </label>
 
             <label className="flex_block">
-              Password
+              Пароль
               <input
                 type="password"
                 id="password"
@@ -75,10 +77,16 @@ class Auth extends React.Component {
             </label>
 
             <button className="btn" type="submit">
-              Submit
+              Надіслати
             </button>
           </form>
         </div>
+
+        {isLoading && <Loader isLoading={isLoading} />}
+
+        {nothing && (
+          <h4 className="message">Не знайдено лотів, спробуйте пізніше</h4>
+        )}
       </>
     );
   }

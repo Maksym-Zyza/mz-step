@@ -51,7 +51,7 @@ a {
   align-items: center;
   flex-direction: column;
   margin-top: 10px;
-  color: #01b4e4;
+  color: #e45f4c;
 }
 
 .flex_block > input {
@@ -61,8 +61,8 @@ a {
   width: 240px;
   height: 30px;
   color: #424242;
-  border: 1px solid #3197f3;
-  outline: #3197f3;
+  border: 1px solid #e45f4c;
+  outline: #e45f4c;
   border-radius: 5px;
 }
 
@@ -78,14 +78,14 @@ a {
 .btn {
   margin-top: 10px;
   padding: 10px 40px;
-  background-color: #01b4e4;
+  background-color: #e45f4c;
   text-align: center;
   font-weight: 700;
   color: #fff;
   border-radius: 10px;
   text-decoration: none;
   border: 0;
-  outline: #01b4e4;
+  outline: #e45f4c;
 }
 
 .btn:hover {
@@ -98,6 +98,8 @@ a {
   text-align: center;
   border-radius: 5px;
   background-color: #e45f4c;
+  filter: drop-shadow(4px 4px 4px rgba(55%, 55%, 55%, 0.6));
+  box-shadow: 0 0 20px rgba(55%, 55%, 55%, 0.5);
 }
 
 /* Form-serch */
@@ -113,7 +115,7 @@ a {
   font-size: 15px;
   border: 1px solid;
   outline: none;
-  color: #454545;
+  color: #2a2a2a;
 }
 
 .select_sum {
@@ -265,7 +267,7 @@ a {
 .table_title {
   font-weight: 800;
   color: white;
-  background-color: #ef5350;
+  background-color: #e45f4c;
   font-size: 16px;
 }
 
@@ -300,8 +302,8 @@ th {
 }
 
 .gallery {
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  filter: drop-shadow(4px 4px 4px rgba(55%, 55%, 55%, 0.6));
+  box-shadow: 0 0 20px rgba(55%, 55%, 55%, 0.5);
 }
 
 .gallery_lot {
@@ -311,7 +313,7 @@ th {
 }
 
 .lot_link {
-  color: #ef5350;
+  color: #e45f4c;
 }
 
 @media screen and (min-width: 700px) {
@@ -391,7 +393,13 @@ th {
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  border: 1px solid grey;
+  color: #e45f4c;
+  border: 1px solid #e45f4c;
+}
+
+.toTopBtn:hover {
+  color: white;
+  background-color: #e45f4c;
 }
 
 #toTop {
