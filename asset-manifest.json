@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/mz-step/static/css/main.21f7294c.chunk.css",
+    "main.js": "/mz-step/static/js/main.10d3fd1e.chunk.js",
+    "main.js.map": "/mz-step/static/js/main.10d3fd1e.chunk.js.map",
+    "runtime-main.js": "/mz-step/static/js/runtime-main.d33e9d49.js",
+    "runtime-main.js.map": "/mz-step/static/js/runtime-main.d33e9d49.js.map",
+    "static/js/2.63072d2a.chunk.js": "/mz-step/static/js/2.63072d2a.chunk.js",
+    "static/js/2.63072d2a.chunk.js.map": "/mz-step/static/js/2.63072d2a.chunk.js.map",
+    "index.html": "/mz-step/index.html",
+    "static/css/main.21f7294c.chunk.css.map": "/mz-step/static/css/main.21f7294c.chunk.css.map",
+    "static/js/2.63072d2a.chunk.js.LICENSE.txt": "/mz-step/static/js/2.63072d2a.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/mz-step/static/media/icon-close.83ea9b8a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d33e9d49.js",
+    "static/js/2.63072d2a.chunk.js",
+    "static/css/main.21f7294c.chunk.css",
+    "static/js/main.10d3fd1e.chunk.js"
+  ]
+}
