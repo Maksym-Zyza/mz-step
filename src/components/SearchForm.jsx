@@ -6,16 +6,27 @@ export default function SearchForm({ lots }) {
     setMinDate(e.target.value);
   };
 
-  const [maxDateSt, setMaxDate] = useState("2021-12-31");
+  const [maxDateSt, setMaxDate] = useState("2040-12-31");
   const updateMaxDate = (e) => {
     setMaxDate(e.target.value);
   };
+  useEffect(() => {
+    // Поточна дата
+    var today =
+      new Date().getFullYear() +
+      "-" +
+      ("0" + (new Date().getMonth() + 1)).slice(-2) +
+      "-" +
+      ("0" + new Date().getDate()).slice(-2);
+    setMaxDate(today);
+  }, [lots]);
+
   const [sumStartSt, setSumStart] = useState("0");
   const updateSumStart = (e) => {
     setSumStart(e.target.value);
   };
 
-  const [sumEndSt, setSumrEnd] = useState("100000000");
+  const [sumEndSt, setSumrEnd] = useState("1000000000");
   const updateSumrEnd = (e) => {
     setSumrEnd(e.target.value);
   };
@@ -53,9 +64,9 @@ export default function SearchForm({ lots }) {
         Number(lot.date_publication.split(".").reverse().join("")) <= maxDate &&
         Number(lot.date_publication.split(".").reverse().join("")) >= minDate
     );
-    // console.log("Фильтр по даті:", filterDate.length);
+    console.log("Фильтр по даті:", filterDate.length);
 
-    // Фільтр по сумі
+    // Фільтр по сумі та даті
     const filterSum = filterDate.filter(
       (arr) =>
         Number(
@@ -73,7 +84,7 @@ export default function SearchForm({ lots }) {
             .replace(/,/, ".")
         ) >= minSum
     );
-    // console.log("Фильтр по даті та сумі:", filterSum.length);
+    console.log("Фильтр по даті та сумі:", filterSum.length);
 
     // Фільтер по статусу
     if (select !== "Всі статуси") {
@@ -82,8 +93,8 @@ export default function SearchForm({ lots }) {
       );
 
       setFoundLots(filterLots.length);
-      // console.log(`За параметрами пошуку: "${select}": ${filterLots.length}`);
-    } else setFoundLots(lots.length);
+      console.log(`За параметрами пошуку: "${select}": ${filterLots.length}`);
+    } else setFoundLots(filterSum.length);
 
     // Кількість Активних лотів
     const filterLotsActiv = filterSum.filter((arr) =>
