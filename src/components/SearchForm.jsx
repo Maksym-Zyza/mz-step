@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function SearchForm({ lots }) {
+export default function SearchForm({ lots, getLots }) {
   const [minDateSt, setMinDate] = useState("2020-01-01");
   const updateMinDate = (e) => {
     setMinDate(e.target.value);
@@ -10,8 +10,8 @@ export default function SearchForm({ lots }) {
   const updateMaxDate = (e) => {
     setMaxDate(e.target.value);
   };
+  // Поточна дата
   useEffect(() => {
-    // Поточна дата
     var today =
       new Date().getFullYear() +
       "-" +
@@ -92,9 +92,14 @@ export default function SearchForm({ lots }) {
         arr.lot_status.split(" ").join("").includes(select)
       );
 
+      getLots(filterLots);
       setFoundLots(filterLots.length);
       // console.log(`За параметрами пошуку: "${select}": ${filterLots.length}`);
-    } else setFoundLots(filterSum.length);
+    } else {
+      getLots(filterSum);
+      setFoundLots(filterSum.length);
+      // console.log(`За параметрами пошуку: "${select}": ${filterSum.length}`);
+    }
 
     // Кількість Активних лотів
     const filterLotsActiv = filterSum.filter((arr) =>
@@ -192,7 +197,7 @@ export default function SearchForm({ lots }) {
         </div>
       </section>
       <div className="result-div">
-        <h3 className="result">Всього лотів: {lots.length}</h3>
+        <h3 className="result">Всього лотів в системі: {lots.length}</h3>
         <h3 className="result">Активних лотів: {activLots}</h3>
         <h3 className="result">Знайдено за параметрами пошуку: {foundLots}</h3>
       </div>

@@ -176,11 +176,6 @@ a {
   font-weight: 500;
 }
 
-.search-form .select:hover,
-.search-form .select:focus {
-  background-color: #fff3e0;
-}
-
 .form-field:hover > .form-icon,
 .form-field:focus-within > .form-icon {
   fill: var(--accent-color);

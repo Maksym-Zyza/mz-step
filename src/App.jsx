@@ -7,7 +7,7 @@ import scrollTo from "./components/scrollTo";
 export default class App extends React.Component {
   state = {
     account: false,
-    lots: {},
+    lots: [],
   };
 
   componentDidMount() {
@@ -24,22 +24,16 @@ export default class App extends React.Component {
     this.setState({ account: true });
   };
 
-  getLots = () => {
-    // this.setState({ lots: {} });
-  };
-
   render() {
     const { account, lots } = this.state;
 
     return (
       <div>
         {/* Get Lots */}
-        {account && (
-          <Lots lots={lots} getLots={this.getLots} scroll={scrollTo()} />
-        )}
+        {account && <Lots lots={lots} scroll={scrollTo()} />}
 
         {/* Authorisetion */}
-        {!account && <Authorisetion hasAccount={this.hasAccount} lots={lots} />}
+        {!account && <Authorisetion hasAccount={this.hasAccount} />}
       </div>
     );
   }

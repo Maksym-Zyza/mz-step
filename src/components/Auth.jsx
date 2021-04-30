@@ -37,13 +37,10 @@ class Auth extends React.Component {
         alert(error.message);
         this.setState({ isLoading: false });
       });
-    // .finally(this.setState({ isLoading: false }));
   };
 
   render() {
     const { isLoading } = this.state;
-    const { lots } = this.props;
-    const nothing = lots.length === 0;
 
     return (
       <>
@@ -83,10 +80,6 @@ class Auth extends React.Component {
         </div>
 
         {isLoading && <Loader isLoading={isLoading} />}
-
-        {nothing && (
-          <h4 className="message">Не знайдено лотів, спробуйте пізніше</h4>
-        )}
       </>
     );
   }
